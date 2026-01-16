@@ -31,36 +31,26 @@ exports.sendOtpEmail = async (to, otp) => {
     border:1px solid #232632;
     overflow:hidden;
   ">
-
-    <!-- Header -->
+  <!-- Header -->
     <div style="
-      padding:28px 24px;
-      text-align:center;
-      border-bottom:1px solid #232632;
-    ">
-      <div style="padding:12px;">
+        padding:16px 12px;
+        text-align:center;
+        border-bottom:1px solid #232632;
+        ">
         <img
             src="https://raw.githubusercontent.com/yogitha-maheswari/TaskFlow-Backend/main/assets/logo%20-%20email.png"
             alt="TaskFlow"
             style="
             display:block;
             width:100%;
-            max-width:420px;
+            max-width:372px;
             height:auto;
             margin:0 auto;
-            border-radius:16px;
+            border-radius:12px;
             "
         />
     </div>
 
-      <p style="
-        margin:0;
-        font-size:13px;
-        color:#9AA0AA;
-      ">
-        Secure Password Reset
-      </p>
-    </div>
 
     <!-- Content -->
     <div style="padding:24px;">
