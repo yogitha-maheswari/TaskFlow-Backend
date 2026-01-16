@@ -7,18 +7,19 @@ apiKey.apiKey = process.env.BREVO_API_KEY;
 
 const transactionalApi = new SibApiV3Sdk.TransactionalEmailsApi();
 
+// ⬇️ PASTE YOUR BASE64 SVG HERE
+const LOGO_BASE64 = `
+data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjkwIiBoZWlnaHQ9IjI4MyIgdmlld0JveD0iMCAwIDI5MCAyODMiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0yNzYuMTU4IDU1SDE2Ny42NDFMMTU5LjM1NCAxMDJIMjYxTDI0Ny4xNTggMTU3SDE0OS42NTVMMTM0Ljg0NyAyNDAuOThDMTMwLjA1MiAyNjguMTc1IDEwNC4xMTkgMjg2LjMzMyA3Ni45MjM4IDI4MS41MzhMNzIgMjgwLjY3TDExMS43OTEgNTVIMFYwSDI5MEwyNzYuMTU4IDU1WiIgZmlsbD0iIzE1MTcxRiIvPgo8L3N2Zz4K
+`;
+
 exports.sendOtpEmail = async (to, otp) => {
   try {
     await transactionalApi.sendTransacEmail({
       sender: {
         name: 'TaskFlow',
-        email: 'yogitham2004@gmail.com', // ✅ MUST be verified in Brevo
+        email: 'yogitham2004@gmail.com', // ✅ verified sender
       },
-      to: [
-        {
-          email: to,
-        },
-      ],
+      to: [{ email: to }],
       subject: '🔐 TaskFlow Password Reset OTP',
       htmlContent: `
         <div style="
@@ -41,6 +42,14 @@ exports.sendOtpEmail = async (to, otp) => {
               text-align:center;
               border-bottom:1px solid #232632;
             ">
+              <img
+                src="${LOGO_BASE64}"
+                alt="TaskFlow Logo"
+                width="56"
+                height="56"
+                style="margin-bottom:12px;"
+              />
+
               <h1 style="
                 margin:0;
                 font-size:22px;
@@ -49,6 +58,7 @@ exports.sendOtpEmail = async (to, otp) => {
               ">
                 TaskFlow
               </h1>
+
               <p style="
                 margin-top:6px;
                 font-size:13px;
@@ -86,6 +96,7 @@ exports.sendOtpEmail = async (to, otp) => {
                 Use the OTP below to continue:
               </p>
 
+              <!-- OTP Box -->
               <div style="
                 background-color:#1B1E26;
                 border:1px solid #232632;
@@ -110,7 +121,7 @@ exports.sendOtpEmail = async (to, otp) => {
                 margin-bottom:8px;
               ">
                 ⏳ This OTP is valid for
-                <b style="color:#FFFFFF;">20 minutes</b>.
+                <b style="color:#FFFFFF;">10 minutes</b>.
               </p>
 
               <p style="
