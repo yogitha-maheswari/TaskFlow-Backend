@@ -38,7 +38,7 @@ exports.sendOtpEmail = async (to, otp) => {
               border-bottom:1px solid #232632;
             ">
               <img
-                src="https://github.com/yogitha-maheswari/TaskFlow-Backend/blob/main/assets/logo.png"
+                src="https://raw.githubusercontent.com/yogitha-maheswari/TaskFlow-Backend/main/assets/logo.png"
                 alt="TaskFlow Logo"
                 width="56"
                 height="56"
