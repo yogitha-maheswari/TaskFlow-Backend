@@ -38,15 +38,20 @@ exports.sendOtpEmail = async (to, otp) => {
       text-align:center;
       border-bottom:1px solid #232632;
     ">
-      <img
-        src="https://raw.githubusercontent.com/yogitha-maheswari/TaskFlow-Backend/main/assets/logo%20-%20email.png"
-        alt="TaskFlow"
-        width="180"
-        style="
-          display:block;
-          margin:0 auto 6px auto;
-        "
-      />
+      <div style="padding:24px;">
+        <img
+            src="https://raw.githubusercontent.com/yogitha-maheswari/TaskFlow-Backend/main/assets/logo%20-%20email.png"
+            alt="TaskFlow"
+            style="
+            display:block;
+            width:100%;
+            max-width:420px;
+            height:auto;
+            margin:0 auto;
+            "
+        />
+      </div>
+
 
       <p style="
         margin:0;
