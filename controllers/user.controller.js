@@ -77,23 +77,43 @@ exports.login = async (req, res) => {
 
 /* 🔐 SEND OTP */
 exports.forgotPassword = async (req, res) => {
-    try {
-        const { email } = req.body;
+  console.log('📥 forgot-password HIT');
 
-        const user = await UserServices.checkUser(email);
-        if (!user) {
-            return res.status(404).json({ status: false, message: "User not found" });
-        }
+  try {
+    const { email } = req.body;
+    console.log('📧 Email:', email);
 
-        const otp = await UserServices.generateOtp(user);
-        await sendOtpEmail(email, otp);
+    const user = await UserServices.checkUser(email);
+    console.log('👤 User found:', !!user);
 
-        res.json({ status: true, message: "OTP sent to email" });
-
-    } catch (error) {
-        res.status(500).json({ status: false, message: error.message });
+    if (!user) {
+      return res.status(404).json({
+        status: false,
+        message: "User not found",
+      });
     }
+
+    const otp = await UserServices.generateOtp(user);
+    console.log('🔐 OTP:', otp);
+
+    console.log('📤 Sending email...');
+    await sendOtpEmail(email, otp);
+    console.log('✅ Email sent');
+
+    return res.json({
+      status: true,
+      message: "OTP sent to email",
+    });
+
+  } catch (error) {
+    console.error('❌ Forgot password error:', error);
+    return res.status(500).json({
+      status: false,
+      message: error.message || 'Internal server error',
+    });
+  }
 };
+
 
 /* 🔐 VERIFY OTP + RESET PASSWORD */
 exports.resetPassword = async (req, res) => {
