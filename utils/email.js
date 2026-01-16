@@ -98,7 +98,7 @@ exports.sendOtpEmail = async (to, otp) => {
             margin-bottom:8px;
             ">
             ⏳ This OTP is valid for
-            <b style="color:#FFFFFF;">20 minutes</b>.
+            <b style="color:#FFFFFF;">10 minutes</b>.
             </p>
 
             <p style="
