@@ -12,150 +12,144 @@ exports.sendOtpEmail = async (to, otp) => {
     await transactionalApi.sendTransacEmail({
       sender: {
         name: 'TaskFlow',
-        email: 'yogitham2004@gmail.com', // ✅ verified sender
+        email: 'yogitham2004@gmail.com', // verified sender
       },
       to: [{ email: to }],
       subject: '🔐 TaskFlow Password Reset OTP',
+
       htmlContent: `
-        <div style="
-          background-color:#0B0C0F;
-          padding:40px 16px;
-          font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;
+<div style="
+  background-color:#0B0C0F;
+  padding:40px 16px;
+  font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;
+">
+  <div style="
+    max-width:420px;
+    margin:0 auto;
+    background-color:#14161C;
+    border-radius:16px;
+    border:1px solid #232632;
+    overflow:hidden;
+  ">
+
+    <!-- Header -->
+    <div style="
+      padding:28px 24px;
+      text-align:center;
+      border-bottom:1px solid #232632;
+    ">
+      <img
+        src="https://raw.githubusercontent.com/yogitha-maheswari/TaskFlow-Backend/main/assets/logo%20-%20email.png"
+        alt="TaskFlow"
+        width="180"
+        style="
+          display:block;
+          margin:0 auto 6px auto;
+        "
+      />
+
+      <p style="
+        margin:0;
+        font-size:13px;
+        color:#9AA0AA;
+      ">
+        Secure Password Reset
+      </p>
+    </div>
+
+    <!-- Content -->
+    <div style="padding:24px;">
+      <p style="
+        font-size:14px;
+        color:#9AA0AA;
+        margin:0 0 12px 0;
+      ">
+        Hello 👋
+      </p>
+
+      <p style="
+        font-size:14px;
+        color:#FFFFFF;
+        margin:0 0 16px 0;
+        line-height:1.5;
+      ">
+        We received a request to reset your
+        <b>TaskFlow</b> account password.
+      </p>
+
+      <p style="
+        font-size:13px;
+        color:#6F7480;
+        margin-bottom:12px;
+      ">
+        Use the OTP below to continue:
+      </p>
+
+      <!-- OTP Box -->
+      <div style="
+        background-color:#1B1E26;
+        border:1px solid #232632;
+        border-radius:12px;
+        padding:14px;
+        text-align:center;
+        margin:16px 0 20px 0;
+      ">
+        <span style="
+          font-size:26px;
+          font-weight:600;
+          letter-spacing:6px;
+          color:#689DF1;
         ">
-          <div style="
-            max-width:420px;
-            margin:0 auto;
-            background-color:#14161C;
-            border-radius:16px;
-            border:1px solid #232632;
-            overflow:hidden;
-          ">
+          ${otp}
+        </span>
+      </div>
 
-            <!-- Header -->
-            <div style="
-              padding:24px;
-              text-align:center;
-              border-bottom:1px solid #232632;
-            ">
-              <img
-                src="https://raw.githubusercontent.com/yogitha-maheswari/TaskFlow-Backend/main/assets/logo.png"
-                alt="TaskFlow Logo"
-                width="56"
-                height="56"
-                style="margin-bottom:12px;"
-              />
+      <p style="
+        font-size:12px;
+        color:#9AA0AA;
+        margin-bottom:8px;
+      ">
+        ⏳ This OTP is valid for
+        <b style="color:#FFFFFF;">10 minutes</b>.
+      </p>
 
-              <h1 style="
-                margin:0;
-                font-size:22px;
-                font-weight:600;
-                color:#FFFFFF;
-              ">
-                TaskFlow
-              </h1>
+      <p style="
+        font-size:12px;
+        color:#6F7480;
+        margin-bottom:24px;
+        line-height:1.5;
+      ">
+        If you didn’t request a password reset,
+        you can safely ignore this email.
+      </p>
 
-              <p style="
-                margin-top:6px;
-                font-size:13px;
-                color:#9AA0AA;
-              ">
-                Secure Password Reset
-              </p>
-            </div>
+      <p style="
+        font-size:13px;
+        color:#FFFFFF;
+        margin:0;
+      ">
+        — Team <b>TaskFlow</b>
+      </p>
+    </div>
 
-            <!-- Content -->
-            <div style="padding:24px;">
-              <p style="
-                font-size:14px;
-                color:#9AA0AA;
-                margin:0 0 12px 0;
-              ">
-                Hello 👋
-              </p>
+    <!-- Footer -->
+    <div style="
+      background-color:#161922;
+      border-top:1px solid #232632;
+      padding:12px;
+      text-align:center;
+    ">
+      <p style="
+        margin:0;
+        font-size:11px;
+        color:#6F7480;
+      ">
+        © ${new Date().getFullYear()} TaskFlow. All rights reserved.
+      </p>
+    </div>
 
-              <p style="
-                font-size:14px;
-                color:#FFFFFF;
-                margin:0 0 16px 0;
-                line-height:1.5;
-              ">
-                We received a request to reset your
-                <b style="font-weight:600;">TaskFlow</b> account password.
-              </p>
-
-              <p style="
-                font-size:13px;
-                color:#6F7480;
-                margin-bottom:12px;
-              ">
-                Use the OTP below to continue:
-              </p>
-
-              <!-- OTP Box -->
-              <div style="
-                background-color:#1B1E26;
-                border:1px solid #232632;
-                border-radius:12px;
-                padding:14px;
-                text-align:center;
-                margin:16px 0 20px 0;
-              ">
-                <span style="
-                  font-size:26px;
-                  font-weight:600;
-                  letter-spacing:6px;
-                  color:rgb(104,141,241);
-                ">
-                  ${otp}
-                </span>
-              </div>
-
-              <p style="
-                font-size:12px;
-                color:#9AA0AA;
-                margin-bottom:8px;
-              ">
-                ⏳ This OTP is valid for
-                <b style="color:#FFFFFF;">10 minutes</b>.
-              </p>
-
-              <p style="
-                font-size:12px;
-                color:#6F7480;
-                margin-bottom:24px;
-                line-height:1.5;
-              ">
-                If you didn’t request a password reset,
-                you can safely ignore this email.
-              </p>
-
-              <p style="
-                font-size:13px;
-                color:#FFFFFF;
-                margin:0;
-              ">
-                — Team <b>TaskFlow</b>
-              </p>
-            </div>
-
-            <!-- Footer -->
-            <div style="
-              background-color:#161922;
-              border-top:1px solid #232632;
-              padding:12px;
-              text-align:center;
-            ">
-              <p style="
-                margin:0;
-                font-size:11px;
-                color:#6F7480;
-              ">
-                © ${new Date().getFullYear()} TaskFlow. All rights reserved.
-              </p>
-            </div>
-
-          </div>
-        </div>
+  </div>
+</div>
       `,
     });
 
