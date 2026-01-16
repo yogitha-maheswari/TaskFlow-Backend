@@ -7,11 +7,6 @@ apiKey.apiKey = process.env.BREVO_API_KEY;
 
 const transactionalApi = new SibApiV3Sdk.TransactionalEmailsApi();
 
-// ⬇️ PASTE YOUR BASE64 SVG HERE
-const LOGO_BASE64 = `
-data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjkwIiBoZWlnaHQ9IjI4MyIgdmlld0JveD0iMCAwIDI5MCAyODMiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0yNzYuMTU4IDU1SDE2Ny42NDFMMTU5LjM1NCAxMDJIMjYxTDI0Ny4xNTggMTU3SDE0OS42NTVMMTM0Ljg0NyAyNDAuOThDMTMwLjA1MiAyNjguMTc1IDEwNC4xMTkgMjg2LjMzMyA3Ni45MjM4IDI4MS41MzhMNzIgMjgwLjY3TDExMS43OTEgNTVIMFYwSDI5MEwyNzYuMTU4IDU1WiIgZmlsbD0iIzE1MTcxRiIvPgo8L3N2Zz4K
-`;
-
 exports.sendOtpEmail = async (to, otp) => {
   try {
     await transactionalApi.sendTransacEmail({
@@ -43,7 +38,7 @@ exports.sendOtpEmail = async (to, otp) => {
               border-bottom:1px solid #232632;
             ">
               <img
-                src="${LOGO_BASE64}"
+                src="https://github.com/yogitha-maheswari/TaskFlow-Backend/blob/main/assets/logo.png"
                 alt="TaskFlow Logo"
                 width="56"
                 height="56"
