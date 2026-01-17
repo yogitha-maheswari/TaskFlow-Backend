@@ -8,7 +8,7 @@ const connectDB = require("./config/db");
 // --------------------------------------------------
 // HEALTH CHECK (KEEP-ALIVE ENDPOINT)
 // --------------------------------------------------
-app.get("/health", (req, res) => {
+app.get("/healthz", (req, res) => {
   res.status(200).send("OK");
 });
 
